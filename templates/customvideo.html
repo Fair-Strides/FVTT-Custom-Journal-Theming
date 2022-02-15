@@ -1,0 +1,27 @@
+<div id="{{id}}" class="custom-video-app sheet" data-appid="{{appId}}">
+    {{#if headerButtons}}
+    <div id="header-buttons" class="custom-video-buttons">
+        {{#each headerButtons}}
+        <a class={{class}}>{{localize this.label}}</a>
+        {{/each}}
+    </div>
+    {{/if}}
+    <section>
+        <form autocomplete="off" class="editable">
+            <div class="background-video" style="background-image: url('modules/custom-journal/textures/parchment-1.jpg'); transform: rotate({{imgRotation}}deg)">
+                <video autoplay loop controls height="{{videoHeight}}" width="{{videoWidth}}">
+					<source src="{{img}}" type="video/webm">
+				</video>
+            </div>
+            <div id="editor" style="color:{{textcolor}}; transform: rotate({{editorRotation}}deg)">
+                {{editor content=data.content target="content" button=true editable=editable owner=owner}}
+            </div>
+        </form>
+    </section>
+    <div id="user-buttons" class="custom-video-buttons">
+        {{#each userButtons}}
+        <a class={{class}}>{{localize this.label}}</a>
+        {{/each}}
+    </div>
+</div>
+

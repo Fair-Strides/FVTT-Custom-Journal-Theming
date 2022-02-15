@@ -1,4 +1,5 @@
 import { ImageJournal } from './image-journal.js';
+import { VideoJournal } from './video-journal.js';
 
 /* CUSTOMIZE
  * Add any extra themes here: just copy-paste the whole block, changing only the class
@@ -171,6 +172,12 @@ Journal.registerSheet("journals", SciFiTwoJournal, {
 
 Journal.registerSheet("journals", ImageJournal, {
 	label: game.i18n.localize("custom-journal.ImageJournal"),
+	types: ["base"],
+	makeDefault: false
+});
+
+Journal.registerSheet("journals", VideoJournal, {
+	label: game.i18n.localize("custom-journal.VideoJournal"),
 	types: ["base"],
 	makeDefault: false
 });
