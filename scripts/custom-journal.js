@@ -1,3 +1,5 @@
+import { ImageJournal } from './image-journal.js';
+
 /* CUSTOMIZE
  * Add any extra themes here: just copy-paste the whole block, changing only the class
  * name for the theme's name that will appear in the drop-down, and the name in single
@@ -125,12 +127,6 @@ console.log("Custom Journals | Registering the module's sheets.");
  * Here, register your sheet so it shows up properly in the dropdown, just change
  * for your sheet name and you're good to go
  */
-Journal.registerSheet("journals", CustomJournalSheet, {
-	label: game.i18n.localize("custom-journal.CustomJournalSheet"),
-	types: ["base"],
-	makeDefault: true
-});
-
 Journal.registerSheet("journals", DarkModeJournal, {
 	label: game.i18n.localize("custom-journal.DarkMode"),
 	types: ["base"],
@@ -169,6 +165,12 @@ Journal.registerSheet("journals", SciFiOneJournal, {
 
 Journal.registerSheet("journals", SciFiTwoJournal, {
 	label: game.i18n.localize("custom-journal.SciFiTwo"),
+	types: ["base"],
+	makeDefault: false
+});
+
+Journal.registerSheet("journals", ImageJournal, {
+	label: game.i18n.localize("custom-journal.ImageJournal"),
 	types: ["base"],
 	makeDefault: false
 });
