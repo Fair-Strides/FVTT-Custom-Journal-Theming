@@ -15,6 +15,7 @@ export class VideoJournal extends DocumentSheet {
 	handlers = {};
 
 	getFlag(flag) {
+//		console.log(`${flag}: `, this.object.getFlag('custom-journal', flag));
 		return this.object.getFlag('custom-journal', flag);
 	}
 
@@ -27,15 +28,21 @@ export class VideoJournal extends DocumentSheet {
 	}
 
 	async setDefaultFlags() {
-		await this.setDefaultFlag('img', '');
+//		await this.setDefaultFlag('img', '');
+		await this.setDefaultFlag('vid', '');
 		await this.setDefaultFlag('locked', true);
 		await this.setDefaultFlag('draggable', false);
 		await this.setDefaultFlag('video_position', { width: 0, height: 0, top: 0, left: 0 });
+//		await this.setDefaultFlag('image_position', { width: 0, height: 0, top: 0, left: 0 });
 		await this.setDefaultFlag('editor_position', { width: 0, height: 0, top: 0, left: 0 });
 		await this.setDefaultFlag('text-color', '#ffffff');
+//		await this.setDefaultFlag('image_rotation', '0');
 		await this.setDefaultFlag('video_rotation', '0');
 		await this.setDefaultFlag('video_height', '480');
 		await this.setDefaultFlag('video_width', '480');
+		await this.setDefaultFlag('video_auto', true);
+		await this.setDefaultFlag('video_loop', true);
+		await this.setDefaultFlag('video_controls', true);
 		await this.setDefaultFlag('editor_rotation', '0');
 	}
 
@@ -43,7 +50,8 @@ export class VideoJournal extends DocumentSheet {
 	getData(options) {
 		const data = super.getData(options);
 		data.title = this.title; // Needed for video mode
-		data.video = this.getFlag('img');
+		data.video = this.getFlag('vid');
+//		data.image = this.getFlag('img');
 		data.folders = game.folders.filter((f) => f.data.type === 'JournalEntry' && f.displayed);
 		return data;
 	}
@@ -96,19 +104,25 @@ export class VideoJournal extends DocumentSheet {
 		mergeObject(this.options, options, { insertKeys: false });
 
 		// Get the existing HTML element and application data used for rendering
-		const img = this.getFlag('img') || 'modules/custom-journal/textures/bg.webm';
+//		const img = this.getFlag('img') || '';//'modules/custom-journal/textures/parchment-1.jpg';
+		const vid = this.getFlag('vid') || '';
 		const windowData = {
 			id: this.id,
 			appId: this.appId,
-			img,
+//			img,
+			vid,
 			data: this.object.data,
 			videoHeight: this.getFlag('video_height'),
 			videoWidth: this.getFlag('video_width'),
+			videoAuto: this.getFlag('video_auto'),
+			videoLoop: this.getFlag('video_loop'),
+			videoControls: this.getFlag('video_controls'),
 			headerButtons: this._getHeaderButtons(),
 			userButtons: this._getUserButtons(),
 			textcolor: this.getFlag('text-color'),
 			editorRotation: this.getFlag('editor_rotation'),
-			imgRotation: this.getFlag('video_rotation'),
+//			imgRotation: this.getFlag('image_rotation'),
+			vidRotation: this.getFlag('video_rotation'),
 		};
 		windowData.buttons = [...windowData.headerButtons, ...windowData.userButtons];
 		options = mergeObject(options, windowData);
@@ -178,21 +192,24 @@ export class VideoJournal extends DocumentSheet {
 	}
 
 	async _onRender(html, options, renderinner) {
-		const bgVideo = this.getFlag('img') || 'modules/custom-journal/textures/bg.webm';
+		const bgVideo = this.getFlag('vid') || 'modules/custom-journal/textures/bg.webm';
 		const position = await VideoPopout.getPosition(bgVideo);
 		mergeObject(options, position);
 		options.classes = this.constructor.defaultOptions.classes.concat(VideoPopout.defaultOptions.classes);
 
 		this.setPosition(this.position);
 		this.bringToTop();
-
+		
 		// Make Video Draggable when Locked
-		const img = html.find('.background-video');
+//		const img = html.find('.background-image');
+		const video = html.find('.background-video');
 		const editor = html.find('#editor');
 		if (!renderinner) {
 			this.handlers.editor_lockhandler = new DraggableElement(this, editor, undefined, true, true, this.getFlag('editor_position'));
-			this.handlers.video_lockhandler = new DraggableElement(this, img, undefined, true, true, this.getFlag('video_position'));
-			this.handlers.draghandler = new DraggableExtended(this, img);
+			this.handlers.video_lockhandler = new DraggableElement(this, video, undefined, true, true, this.getFlag('video_position'));
+//			this.handlers.image_lockhandler = new DraggableElement(this, img, undefined, true, true, this.getFlag('image_position'));
+//			this.handlers.draghandler = new DraggableExtended(this, img);
+			this.handlers.draghandler2 = new DraggableExtended(this, video);
 		}
 	}
 
@@ -272,11 +289,15 @@ export class VideoJournal extends DocumentSheet {
 			this.setFlag(`${flag}_rotation`, regex.exec(el.style.transform)[0]);
 		};
 		check('.background-video', 'video');
+//		check('.background-image', 'image');
 		check('#editor', 'editor');
 	}
 
 	async resetPosition() {
-		const img_pos = await VideoPopout.getPosition(this.getFlag('img') || 'modules/custom-journal/textures/bg.webm');
+		const vid_pos = await VideoPopout.getPosition(this.getFlag('vid') || 'modules/custom-journal/textures/bg.webm');
+/*
+		const img_pos = await VideoPopout.getPosition(this.getFlag('img') || 'modules/custom-journal/textures/parchment-1.jpg');
+		
 		const ratio = img_pos.width / img_pos.height;
 		if (img_pos.width > 1000) {
 			img_pos.width = 1000;
@@ -286,8 +307,21 @@ export class VideoJournal extends DocumentSheet {
 			img_pos.height = 600;
 			img_pos.width = 600 * ratio;
 		}
-		this.handlers.video_lockhandler.setPosition({ ...img_pos, top: 0, left: 0 });
+*/		
+		const vidRatio = vid_pos.width / vid_pos.height;
+		if (vid_pos.width > 480) {
+			vid_pos.width = 480;
+			vid_pos.height = 480 / vidRatio;
+		}
+		if (vid_pos.height > 480) {
+			vid_pos.height = 480;
+			vid_pos.width = 480 * vidRatio;
+		}
+		
+		this.handlers.video_lockhandler.setPosition({ ...vid_pos, top: 0, left: 0 });
 		this.handlers.video_lockhandler.setRotation(0);
+//		this.handlers.image_lockhandler.setPosition({ ...img_pos, top: 0, left: 0 });
+//		this.handlers.image_lockhandler.setRotation(0);
 		this.handlers.editor_lockhandler.setPosition({ width: 0, height: 0, top: 0, left: 0 });
 		this.handlers.editor_lockhandler.setRotation(0);
 	}
@@ -330,28 +364,34 @@ export class VideoJournal extends DocumentSheet {
 					const handlers = app.handlers;
 					const html = ev.target.parentElement.parentElement;
 					const btn = ev.target;
-					const img = html.querySelector('.background-video');
+//					const img = html.querySelector('.background-image');
+					const vid = html.querySelector('.background-video');
 					const editor = html.querySelector('#editor');
 					this.locked = !this.locked;
 					btn.text = this.locked ? 'Unlock' : 'Lock';
-					img.classList.toggle('stripes');
+//					img.classList.toggle('stripes');
+					vid.classList.toggle('stripes');
 					editor.classList.toggle('stripes');
 
 					// If its unlocked
 					if (!this.locked) {
 						// Remove the drag event listeners
-						handlers.draghandler.removeListeners();
+//						handlers.draghandler.removeListeners();
+						handlers.draghandler2.removeListeners();
 
-						// Make the Video and Text Editor resizable and draggable when unlocked
+						// Make the Image, Video, and Text Editor resizable and draggable when unlocked
+//						handlers.image_lockhandler.activateListeners();
 						handlers.video_lockhandler.activateListeners();
 						handlers.editor_lockhandler.activateListeners();
 
 						return;
 					}
+//					handlers.image_lockhandler.removeListeners();
 					handlers.video_lockhandler.removeListeners();
 					handlers.editor_lockhandler.removeListeners();
 
-					handlers.draghandler.activateListeners();
+//					handlers.draghandler.activateListeners();
+					handlers.draghandler2.activateListeners();
 				},
 			});
 			buttons.push({
@@ -388,10 +428,15 @@ export class VideoJournal extends DocumentSheet {
 
 	async _onConfigVideo() {
 		this._lock();
-		const img = this.getFlag('img') || '';
+//		const img = this.getFlag('img') || '';
+		const vid = this.getFlag('vid') || '';
 		const textcolor = this.getFlag('text-color');
 		const videoHeight = this.getFlag('video_height');
 		const videoWidth = this.getFlag('video_width');
+		const videoAuto = this.getFlag('video_auto');
+		const videoLoop = this.getFlag('video_loop');
+		const videoControls = this.getFlag('video_controls');
+//		const imageRotation = this.getFlag('image_rotation');
 		const videoRotation = this.getFlag('video_rotation');
 		const editorRotation = this.getFlag('editor_rotation');
 		//const resizable = this.object.getFlag('custom-journal', 'resizable');
@@ -402,7 +447,8 @@ export class VideoJournal extends DocumentSheet {
 		const app = new Dialog(
 			{
 				title: `${this.object.name}: Custom Video Configuration`,
-				content: html({ img, videoHeight, videoWidth, name, textcolor, videoRotation, editorRotation }),
+//				content: html({ img, vid, videoHeight, videoWidth, videoAuto, videoLoop, videoControls, name, textcolor, imageRotation, videoRotation, editorRotation }),
+				content: html({ vid, videoHeight, videoWidth, videoAuto, videoLoop, videoControls, name, textcolor, videoRotation, editorRotation }),
 				buttons: {
 					yes: {
 						icon: `<i class="fas fa-magic"></i>`,
@@ -416,12 +462,17 @@ export class VideoJournal extends DocumentSheet {
 								// Re-draw the updated sheet
 								sheet.render(true);
 							}
-							const img = html.querySelector('#img').value;
+//							const img = html.querySelector('#img').value;
+							const vid = html.querySelector('#vid').value;
 							const newName = html.querySelector('#name').value;
 							const textcolor = html.querySelector('#textcolor').value || '#ffffff';
+//							const imageRotation = html.querySelector('#image-rotation').value;
 							const videoRotation = html.querySelector('#video-rotation').value;
 							const videoHeight = html.querySelector('#video-height').value;
 							const videoWidth = html.querySelector('#video-width').value;
+							const videoAuto = html.querySelector('#video-auto').checked;
+							const videoLoop = html.querySelector('#video-loop').checked;
+							const videoControls = html.querySelector('#video-controls').checked;
 							const editorRotation = html.querySelector('#editor-rotation').value;
 
 							const updates = {};
@@ -429,11 +480,16 @@ export class VideoJournal extends DocumentSheet {
 							if (textcolor !== this.getFlag('text-color')) this.setFlag('text-color', textcolor);
 							if (videoHeight !== this.getFlag('video_height')) this.setFlag('video_height', videoHeight);
 							if (videoWidth !== this.getFlag('video_width')) this.setFlag('video_width', videoWidth);
+							if (videoAuto !== this.getFlag('video_auto')) this.setFlag('video_auto', videoAuto);
+							if (videoLoop !== this.getFlag('video_loop')) this.setFlag('video_loop', videoLoop);
+							if (videoControls !== this.getFlag('video_controls')) this.setFlag('video_controls', videoControls);
+//							if (imageRotation !== this.getFlag('image_rotation')) this.setFlag('image_rotation', imageRotation);
 							if (videoRotation !== this.getFlag('video_rotation')) this.setFlag('video_rotation', videoRotation);
 							if (editorRotation !== this.getFlag('editor_rotation')) this.setFlag('editor_rotation', editorRotation);
-
+							
 							if (Object.keys(updates).length) await journal.update(updates);
 
+/*
 							if (img !== this.getFlag('img')) {
 								this.setFlag('img', img);
 								Hooks.once('renderVideoJournal', async () => {
@@ -441,6 +497,38 @@ export class VideoJournal extends DocumentSheet {
 									sheet.savePosition();
 								});
 							}
+*/
+							if (vid !== this.getFlag('vid')) {
+								this.setFlag('vid', vid);
+								Hooks.once('renderVideoJournal', async () => {
+									await sheet.resetPosition();
+									sheet.savePosition();
+								});
+							}
+/*
+							if (videoAuto !== this.getFlag('video_auto')) {
+								if(videoAuto !== false) {
+									console.log("Turning it on.");
+									 document.getElementById("video-source").setAttribute("autoplay", true); 
+//									 html.getElementById("video-auto").setAttribute("checked", true); 
+								}
+								else {
+									console.log("Turning it off.");
+									document.getElementById("video-source").removeAttribute("autoplay"); 
+//									html.getElementById("video-auto").removeAttribute("checked");
+								}
+								this.setFlag('video_auto', videoAuto);
+							}
+							if (videoLoop !== this.getFlag('video_loop')) {
+								if(videoLoop !== false) {
+									 document.getElementById("video-source").setAttribute("loop", true); 
+								}
+								else {
+									document.getElementById("video-source").removeAttribute("loop"); 
+								}
+								this.setFlag('video_loop', videoLoop);
+							}
+*/
 							renderSheet();
 						},
 					},
@@ -484,13 +572,30 @@ export class VideoJournal extends DocumentSheet {
 
 					// Register the File Picker
 					const img = html.querySelector('#img');
-					const picker = html.querySelector('button.file-picker');
-					const filePicker = new FilePicker({
+					const vid = html.querySelector('#vid');
+//					const vidPicker = html.querySelector('button.vidfile-picker');
+//console.log("HTML", html);
+					const vidPicker = html.querySelectorAll('button.file-picker')[1];
+					const vidFilePicker = new FilePicker({
 						type: 'video',
+						field: vid,
+						displayMode: 'tiles',
+					});
+//					const imgPicker = html.querySelector('button.imgfile-picker');
+					const imgPicker = html.querySelectorAll('button.file-picker')[0];
+					const imgFilePicker = new FilePicker({
+						type: 'image',
 						field: img,
 						displayMode: 'tiles',
 					});
-					picker.addEventListener('click', (ev) => filePicker.render(true));
+					imgPicker.addEventListener('click', (ev) => imgFilePicker.render(true));
+					vidPicker.addEventListener('click', (ev) => vidFilePicker.render(true));
+/*					
+					const autoCheck = html.getElementById("#video-auto");
+					autoCheck.addEventListener('click', (ev) => {
+//						if(videoAuto) {
+					});
+*/
 				},
 			},
 			{ jQuery: false }

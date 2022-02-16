@@ -8,12 +8,54 @@
     {{/if}}
     <section>
         <form autocomplete="off" class="editable">
-            <div class="background-video" style="background-image: url('modules/custom-journal/textures/parchment-1.jpg'); transform: rotate({{imgRotation}}deg)">
-                <video autoplay loop controls height="{{videoHeight}}" width="{{videoWidth}}">
-					<source src="{{img}}" type="video/webm">
-				</video>
-            </div>
-            <div id="editor" style="color:{{textcolor}}; transform: rotate({{editorRotation}}deg)">
+<!--
+			<div class="background-image" style="position: relative; width: 100%; height: 100%; transform: rotate({{imgRotation}}deg)">
+				<img src='{{img}}'>
+			</div>
+-->
+				<div class="background-video" style="transform: rotate({{vidRotation}}deg)">
+					{{#if videoAuto}}
+						{{#if videoLoop}}
+							{{#if videoControls}}
+								<video id="video-source" autoplay loop controls height="{{videoHeight}}" width="{{videoWidth}}" poster='{{img}}'>
+									<source src="{{vid}}" type="video/webm">
+								</video>
+							{{else}}
+								<video id="video-source" autoplay loop height="{{videoHeight}}" width="{{videoWidth}}" poster='{{img}}'>
+									<source src="{{vid}}" type="video/webm">
+								</video>
+							{{/if}}
+						{{else if videoControls}}
+							<video id="video-source" autoplay controls height="{{videoHeight}}" width="{{videoWidth}}" poster='{{img}}'>
+								<source src="{{vid}}" type="video/webm">
+							</video>
+						{{else}}
+						<video id="video-source" autoplay height="{{videoHeight}}" width="{{videoWidth}}" poster='{{img}}'>
+							<source src="{{vid}}" type="video/webm">
+						</video>
+						{{/if}}
+					{{else if videoLoop}}
+						{{#if videoControls}}
+							<video id="video-source" loop controls height="{{videoHeight}}" width="{{videoWidth}}" poster='{{img}}'>
+								<source src="{{vid}}" type="video/webm">
+							</video>
+						{{else}}
+							<video id="video-source" loop height="{{videoHeight}}" width="{{videoWidth}}" poster='{{img}}'>
+								<source src="{{vid}}" type="video/webm">
+							</video>
+						{{/if}}
+					{{else if videoControls}}
+						<video id="video-source" controls height="{{videoHeight}}" width="{{videoWidth}}" poster='{{img}}'>
+							<source src="{{vid}}" type="video/webm">
+						</video>
+					{{else}}
+						<video id="video-source" height="{{videoHeight}}" width="{{videoWidth}}" poster='{{img}}'>
+							<source src="{{vid}}" type="video/webm">
+						</video>
+					{{/if}}
+				</div>
+			
+            <div id="editor" style="color:{{textcolor}}; z-index: 20; transform: rotate({{editorRotation}}deg)">
                 {{editor content=data.content target="content" button=true editable=editable owner=owner}}
             </div>
         </form>
