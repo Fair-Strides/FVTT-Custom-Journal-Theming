@@ -4,13 +4,11 @@
 
 I've incorporated additions by [elizeuangelo](https://github.com/elizeuangelo/FVTT-Custom-Journal-Theming) that included a custom journal theme where an image is specified as a background to the journal entry. Furthermore, the background and editor can be repositioned and resized when the sheet is unlocked.
 
-![Image Journal]
-(https://github.com/Fair-Strides/FVTT-Custom-Journal-Theming/raw/v9-journals/custom-journal_image-journal.png)
+![Image Journal](https://github.com/Fair-Strides/FVTT-Custom-Journal-Theming/raw/v9-journals/custom-journal_image-journal.png)
 
 After that, I received a request to expand it to allow for a Video Journal. This works similarly to the Image Journal above, save that you can configure a video as the background piece, as well as the image that is supplied in case the video can't be loaded in.
 
-![Video Journal]
-(https://github.com/Fair-Strides/FVTT-Custom-Journal-Theming/raw/v9-journals/custom-journal_video-journal.png)
+![Video Journal](https://github.com/Fair-Strides/FVTT-Custom-Journal-Theming/raw/v9-journals/custom-journal_video-journal.png)
 
 ***
 
