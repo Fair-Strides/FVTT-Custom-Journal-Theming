@@ -5,12 +5,12 @@
 I've incorporated additions by [elizeuangelo](https://github.com/elizeuangelo/FVTT-Custom-Journal-Theming) that included a custom journal theme where an image is specified as a background to the journal entry. Furthermore, the background and editor can be repositioned and resized when the sheet is unlocked.
 
 ![Image Journal]
-(https://github.com/Fair-Strides/FVTT-Custom-Journal-Theming/raw/master/custom-journal_image-journal.png)
+(https://github.com/Fair-Strides/FVTT-Custom-Journal-Theming/raw/v9-journals/custom-journal_image-journal.png)
 
 After that, I received a request to expand it to allow for a Video Journal. This works similarly to the Image Journal above, save that you can configure a video as the background piece, as well as the image that is supplied in case the video can't be loaded in.
 
 ![Video Journal]
-(https://github.com/Fair-Strides/FVTT-Custom-Journal-Theming/raw/master/custom-journal_video-journal.png)
+(https://github.com/Fair-Strides/FVTT-Custom-Journal-Theming/raw/v9-journals/custom-journal_video-journal.png)
 
 ***
 
@@ -19,12 +19,12 @@ Not only did Sanyella want to make journals more interesting, they also wanted t
 to be selectively themed, much like actors can. This is now possible, with a current 
 library of several themes in addition to the original Foundry look.
 
-![Preview](https://github.com/Fair-Strides/FVTT-Custom-Journal-Theming/raw/master/custom-journal.png)
+![Preview](https://github.com/Fair-Strides/FVTT-Custom-Journal-Theming/raw/v9-journals/custom-journal.png)
 
 In addition to the regular reskin provided by the different themes, you can now also benefit from some other style options in the editor dropdown, such as drop caps (moved from defaulting to *every* paragraphs' first letter) and various text "boxes"! (*not supported by all themes)
 
-![Additional Options](https://github.com/Fair-Strides/FVTT-Custom-Journal-Theming/raw/master/custom-journal_more-options.png)
-![Block Demo](https://github.com/Fair-Strides/FVTT-Custom-Journal-Theming/raw/master/custom-journal_block-demo.png)
+![Additional Options](https://github.com/Fair-Strides/FVTT-Custom-Journal-Theming/raw/v9-journals/custom-journal_more-options.png)
+![Block Demo](https://github.com/Fair-Strides/FVTT-Custom-Journal-Theming/raw/v9-journals/custom-journal_block-demo.png)
 
 ## Known Issues
 
