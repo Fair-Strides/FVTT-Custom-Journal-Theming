@@ -28,7 +28,7 @@ export class VideoJournal extends DocumentSheet {
 	}
 
 	async setDefaultFlags() {
-//		await this.setDefaultFlag('img', '');
+		await this.setDefaultFlag('img', 'modules/custom-journal/textures/dark-background-1.jpg');
 		await this.setDefaultFlag('vid', '');
 		await this.setDefaultFlag('locked', true);
 		await this.setDefaultFlag('draggable', false);
@@ -51,7 +51,7 @@ export class VideoJournal extends DocumentSheet {
 		const data = super.getData(options);
 		data.title = this.title; // Needed for video mode
 		data.video = this.getFlag('vid');
-//		data.image = this.getFlag('img');
+		data.image = this.getFlag('img');
 		data.folders = game.folders.filter((f) => f.data.type === 'JournalEntry' && f.displayed);
 		return data;
 	}
@@ -104,12 +104,12 @@ export class VideoJournal extends DocumentSheet {
 		mergeObject(this.options, options, { insertKeys: false });
 
 		// Get the existing HTML element and application data used for rendering
-//		const img = this.getFlag('img') || '';//'modules/custom-journal/textures/parchment-1.jpg';
+		const img = this.getFlag('img') || '';//'modules/custom-journal/textures/dark-background-1.jpg';
 		const vid = this.getFlag('vid') || '';
 		const windowData = {
 			id: this.id,
 			appId: this.appId,
-//			img,
+			img,
 			vid,
 			data: this.object.data,
 			videoHeight: this.getFlag('video_height'),
@@ -192,7 +192,7 @@ export class VideoJournal extends DocumentSheet {
 	}
 
 	async _onRender(html, options, renderinner) {
-		const bgVideo = this.getFlag('vid') || 'modules/custom-journal/textures/bg.webm';
+		const bgVideo = this.getFlag('vid') || '';
 		const position = await VideoPopout.getPosition(bgVideo);
 		mergeObject(options, position);
 		options.classes = this.constructor.defaultOptions.classes.concat(VideoPopout.defaultOptions.classes);
@@ -294,7 +294,7 @@ export class VideoJournal extends DocumentSheet {
 	}
 
 	async resetPosition() {
-		const vid_pos = await VideoPopout.getPosition(this.getFlag('vid') || 'modules/custom-journal/textures/bg.webm');
+		const vid_pos = await VideoPopout.getPosition(this.getFlag('vid') || '');
 /*
 		const img_pos = await VideoPopout.getPosition(this.getFlag('img') || 'modules/custom-journal/textures/parchment-1.jpg');
 		
@@ -428,7 +428,7 @@ export class VideoJournal extends DocumentSheet {
 
 	async _onConfigVideo() {
 		this._lock();
-//		const img = this.getFlag('img') || '';
+		const img = this.getFlag('img') || 'modules/custom-journal/textures/dark-background-1.jpg';
 		const vid = this.getFlag('vid') || '';
 		const textcolor = this.getFlag('text-color');
 		const videoHeight = this.getFlag('video_height');
@@ -447,8 +447,8 @@ export class VideoJournal extends DocumentSheet {
 		const app = new Dialog(
 			{
 				title: `${this.object.name}: Custom Video Configuration`,
-//				content: html({ img, vid, videoHeight, videoWidth, videoAuto, videoLoop, videoControls, name, textcolor, imageRotation, videoRotation, editorRotation }),
-				content: html({ vid, videoHeight, videoWidth, videoAuto, videoLoop, videoControls, name, textcolor, videoRotation, editorRotation }),
+				content: html({ img, vid, videoHeight, videoWidth, videoAuto, videoLoop, videoControls, name, textcolor, videoRotation, editorRotation }),
+//				content: html({ vid, videoHeight, videoWidth, videoAuto, videoLoop, videoControls, name, textcolor, videoRotation, editorRotation }),
 				buttons: {
 					yes: {
 						icon: `<i class="fas fa-magic"></i>`,
@@ -462,7 +462,7 @@ export class VideoJournal extends DocumentSheet {
 								// Re-draw the updated sheet
 								sheet.render(true);
 							}
-//							const img = html.querySelector('#img').value;
+							const img = html.querySelector('#img').value;
 							const vid = html.querySelector('#vid').value;
 							const newName = html.querySelector('#name').value;
 							const textcolor = html.querySelector('#textcolor').value || '#ffffff';
@@ -489,18 +489,16 @@ export class VideoJournal extends DocumentSheet {
 							
 							if (Object.keys(updates).length) await journal.update(updates);
 
-/*
 							if (img !== this.getFlag('img')) {
 								this.setFlag('img', img);
-								Hooks.once('renderVideoJournal', async () => {
+								Hooks.once('renderVideoJournal', async (sheet) => {
 									await sheet.resetPosition();
 									sheet.savePosition();
 								});
 							}
-*/
 							if (vid !== this.getFlag('vid')) {
 								this.setFlag('vid', vid);
-								Hooks.once('renderVideoJournal', async () => {
+								Hooks.once('renderVideoJournal', async (sheet) => {
 									await sheet.resetPosition();
 									sheet.savePosition();
 								});
@@ -581,7 +579,7 @@ export class VideoJournal extends DocumentSheet {
 						field: vid,
 						displayMode: 'tiles',
 					});
-//					const imgPicker = html.querySelector('button.imgfile-picker');
+////					const imgPicker = html.querySelector('button.imgfile-picker');
 					const imgPicker = html.querySelectorAll('button.file-picker')[0];
 					const imgFilePicker = new FilePicker({
 						type: 'image',
@@ -589,6 +587,7 @@ export class VideoJournal extends DocumentSheet {
 						displayMode: 'tiles',
 					});
 					imgPicker.addEventListener('click', (ev) => imgFilePicker.render(true));
+
 					vidPicker.addEventListener('click', (ev) => vidFilePicker.render(true));
 /*					
 					const autoCheck = html.getElementById("#video-auto");

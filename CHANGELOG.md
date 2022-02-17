@@ -1,3 +1,14 @@
+# 1.5.0
+
+-Added two new Journal types: Image Journal and Video Journal ( originally incorporated Image Journal from [elizeuangelo](https://github.com/elizeuangelo/FVTT-Custom-Journal-Theming), and then adapted from there)
+-Created a Video Popout to handle the Video Journal, allowing a video as the background of a journal entry
+-Cleaned up the Config for the Image and Video Journal types.
+
+# 1.4.2
+
+-Restored missing styles from the v9 Compatibility update.
+-Also ensured the fonts work (they appear to, so if not let me know!)
+
 # 1.4.1
 
 - Fixed styles section missing from journals' TinyMCE (Thanks arcanist for the assist!)

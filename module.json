@@ -17,7 +17,7 @@
   "url": "https://github.com/Fair-Strides/FVTT-Custom-Journal-Theming/tree/v9-journals",
   "bugs": "https://github.com/Fair-Strides/FVTT-Custom-Journal-Theming/issues",
   "flags": {},
-  "version": "1.4.2",
+  "version": "1.5.0",
   "minimumCoreVersion": "9",
   "compatibleCoreVersion": "9",
   "scripts": [],
@@ -66,7 +66,7 @@
   ],
   "socket": false,
   "manifest": "https://raw.githubusercontent.com/Fair-Strides/FVTT-Custom-Journal-Theming/v9-journals/module.json",
-  "download": "https://github.com/Fair-Strides/FVTT-Custom-Journal-Theming/archive/refs/tags/1.4.2.zip",
+  "download": "https://github.com/Fair-Strides/FVTT-Custom-Journal-Theming/archive/refs/tags/1.5.0.zip",
   "protected": false,
   "coreTranslation": false,
   "library": false

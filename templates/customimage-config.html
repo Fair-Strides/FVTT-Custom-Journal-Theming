@@ -11,7 +11,8 @@
             <input type="text" id="name" name="name" placeholder="Name" value="{{name}}"/>
         </div>
     </div>
-
+	<hr>
+	<h3 style="border: 2px solid #000000; border-top: none; border-left: none; border-right: none;">Background Configuration</h3>
     <div class="form-group">
         <label>Background Image</label>
         <div class="form-fields">
@@ -25,13 +26,14 @@
         <input type="range" id="opacity" name="opacity" min="0" max="1" step="0.05" value="{{opacity}}" />
         <span class="range-value"></span>
 	</div>
-
+	<h3 style="border: 2px solid #000000; border-top: none; border-left: none; border-right: none;">Text Configuration</h3>
     <div class="form-group">
 		<label>Text Color</label>
 		<input type="text" class="color" id="textcolor" name="textcolor" placeholder="#ffffff" value="{{textcolor}}" />
         <input type="color" value="{{textcolor}}" data-edit="textcolor"/>
     </div>
 
+	<h3 style="border: 2px solid #000000; border-top: none; border-left: none; border-right: none;">Rotation Configuration</h3>
     <div class="form-group">
 		<label>Image Rotation</label>
         <input type="range" id="image-rotation" name="image-rotation" min="-180" max="180" step="1" value="{{imageRotation}}" />

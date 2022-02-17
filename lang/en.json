@@ -14,5 +14,6 @@
 	"custom-journal.SimpleBlockFloat": "Simple Block Float",
 	"custom-journal.RidgedBlock": "Ridged Block",
 	"custom-journal.RidgedBlockFloat": "Ridged Block Float",
-	"custom-journal.ImageJournal": "Custom Image"
+	"custom-journal.ImageJournal": "Custom Image",
+	"custom-journal.VideoJournal": "Custom Video"
 }

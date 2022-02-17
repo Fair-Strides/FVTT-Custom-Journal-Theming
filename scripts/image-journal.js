@@ -429,7 +429,7 @@ export class ImageJournal extends DocumentSheet {
 
 							if (img !== this.getFlag('img')) {
 								this.setFlag('img', img);
-								Hooks.once('renderImageJournal', async () => {
+								Hooks.once('renderImageJournal', async (sheet) => {
 									await sheet.resetPosition();
 									sheet.savePosition();
 								});
