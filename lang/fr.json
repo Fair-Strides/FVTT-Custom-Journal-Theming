@@ -13,7 +13,5 @@
 	"custom-journal.SimpleBlock": "Bloc simple",
 	"custom-journal.SimpleBlockFloat": "Block simple flottant",
 	"custom-journal.RidgedBlock": "Bloc à bordure épaisse",
-	"custom-journal.RidgedBlockFloat": "Bloc à bordure épaisse flottant",
-	"custom-journal.ImageJournal": "Custom Image",
-	"custom-journal.VideoJournal": "Custom Video"
+	"custom-journal.RidgedBlockFloat": "Bloc à bordure épaisse flottant"
 }

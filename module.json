@@ -1,34 +1,28 @@
 {
-  "name": "custom-journal",
   "title": "Custom Journal",
   "description": "A custom take on the appearance of journal entries.",
-  "author": "Fair Strides",
   "authors": [
     {
       "name": "Sanyella",
-	  "url": "https://github.com/Sanyella"
+	    "url": "https://github.com/Sanyella"
     },
     {
       "name": "Fair Strides",
       "url": "https://github.com/Fair-Strides",
-      "discord": "Fair Strides#2148"
+      "discord": "fairstrides"
     }
   ],
-  "url": "https://github.com/Fair-Strides/FVTT-Custom-Journal-Theming/tree/v9-journals",
+  "url": "https://github.com/Fair-Strides/FVTT-Custom-Journal-Theming/tree/v10-journals",
   "bugs": "https://github.com/Fair-Strides/FVTT-Custom-Journal-Theming/issues",
-  "flags": {},
-  "version": "1.5.0",
-  "minimumCoreVersion": "9",
-  "compatibleCoreVersion": "9",
+  "manifest": "https://raw.githubusercontent.com/Fair-Strides/FVTT-Custom-Journal-Theming/v10-journals/module.json",
+  "download": "https://github.com/Fair-Strides/FVTT-Custom-Journal-Theming/archive/refs/tags/1.6.0.zip",
+  "version": "1.6.0",
   "scripts": [],
   "esmodules": [
     "scripts/custom-journal.js"
   ],
   "styles": [
     "styles/custom-journal.css",
-	"styles/custom-image.css",
-	"styles/custom-video.css",
-	"styles/video-popout.css",
     "styles/dark-mode.css",
     "styles/dark-slate-journal.css",
     "styles/handwritten-letter.css",
@@ -55,19 +49,22 @@
       "path": "lang/es.json"
     }
   ],
-  "packs": [],
-  "system": [],
-  "dependencies": [
-    {
-      "name": "lib-wrapper",
-      "manifest": "https://github.com/ruipin/fvtt-lib-wrapper/releases/download/latest/module.json",
-      "type": "module"
-    }
-  ],
   "socket": false,
-  "manifest": "https://raw.githubusercontent.com/Fair-Strides/FVTT-Custom-Journal-Theming/v9-journals/module.json",
-  "download": "https://github.com/Fair-Strides/FVTT-Custom-Journal-Theming/archive/refs/tags/1.5.0.zip",
   "protected": false,
   "coreTranslation": false,
-  "library": false
+  "library": false,
+  "compatibility": {
+    "minimum": 10,
+	  "verified": 10
+  },
+  "id": "custom-journal",
+  "relationships": {
+    "modules": [
+      {
+        "id": "lib-wrapper",
+        "type": "module",
+        "manifest": "https://github.com/ruipin/fvtt-lib-wrapper/releases/download/latest/module.json"
+      }
+    ]
+  }
 }

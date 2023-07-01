@@ -13,7 +13,5 @@
 	"custom-journal.SimpleBlock": "Bloque Simple",
 	"custom-journal.SimpleBlockFloat": "Bloque Simple Flotante",
 	"custom-journal.RidgedBlock": "Bloque Marco",
-	"custom-journal.RidgedBlockFloat": "Bloque Marco Flotante",
-	"custom-journal.ImageJournal": "Custom Image",
-	"custom-journal.VideoJournal": "Custom Video"
+	"custom-journal.RidgedBlockFloat": "Bloque Marco Flotante"
 }

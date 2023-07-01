@@ -19,7 +19,7 @@
     Variables for uniform color control
 */
 
-body {
+.sheet.journal-entry {
     --dark-mode-journal-dark-accent-color: #061a5e;
     --dark-mode-journal-base-accent-color: #3F88E6;
     --dark-mode-journal-light-accent-color: #5a9cf1;
@@ -39,46 +39,54 @@ body {
 	Headers and text
 ************************************************/
 
-.dark-mode-journal h2, .dark-mode-journal h1 {
+.sheet.journal-entry.dark-mode-journal .journal-entry-content {
+    color: var(--dark-mode-journal-header-color);
+}
+.sheet.journal-entry.dark-mode-journal .journal-page-content h1,
+.sheet.journal-entry.dark-mode-journal .journal-page-content h2,
+.sheet.journal-entry.dark-mode-journal .journal-page-content h3 {
     border-bottom: 1px solid var(--dark-mode-journal-base-accent-color);
     color: var(--dark-mode-journal-header-color);
 }
 
-.dark-mode-journal .editor-content>h3, .dark-mode-journal .editor-content>h4, .dark-mode-journal .editor-content>h5, .dark-mode-journal .editor-content>h6 {
+.sheet.journal-entry.dark-mode-journal .journal-page-content .editor-content>h3,
+.sheet.journal-entry.dark-mode-journal .journal-page-content .editor-content>h4,
+.sheet.journal-entry.dark-mode-journal .journal-page-content .editor-content>h5,
+.sheet.journal-entry.dark-mode-journal .journal-page-content .editor-content>h6 {
     color: var(--dark-mode-journal-header-color);
 }
 
-.dark-mode-journal .editor-content>p {
+.sheet.journal-entry.dark-mode-journal .journal-page-content .editor-content>p {
     color: var(--dark-mode-journal-base-text-color);
 }
 
 /* bullet-point list */
 
-.dark-mode-journal .editor-content>ul {
+.sheet.journal-entry.dark-mode-journal .journal-page-content .editor-content>ul {
     color: var(--dark-mode-journal-base-text-color);
 }
 
 /* tables in general */
 
-.dark-mode-journal tbody {
+.sheet.journal-entry.dark-mode-journal .journal-page-content tbody {
     color: var(--dark-mode-journal-base-text-color);
 }
 
 /* table header cells */
 
-.dark-mode-journal th {
+.sheet.journal-entry.dark-mode-journal .journal-page-content th {
     color: var(--dark-mode-journal-header-color);
 }
 
 /* MEME minimal compatibility */
 
-.dark-mode-journal .CodeMirror {
+.sheet.journal-entry.dark-mode-journal .journal-page-content .CodeMirror {
     color: var(--dark-mode-journal-base-text-color);
 }
 
 /* The cursor indicating where you are writing */
 
-.dark-mode-journal .CodeMirror-cursor {
+.sheet.journal-entry.dark-mode-journal .journal-page-content .CodeMirror-cursor {
     border-left: 1px solid var(--dark-mode-journal-base-text-color);
 }
 
@@ -86,45 +94,47 @@ body {
     Special text and highlights
 ************************************************/
 
-.dark-mode-journal .editor-content>blockquote {
+.sheet.journal-entry.dark-mode-journal .journal-page-content .editor-content>blockquote {
     color: var(--dark-mode-journal-dark-text-color);
 }
 
-.dark-mode-journal ::selection {
+.sheet.journal-entry.dark-mode-journal .journal-page-content ::selection {
     background: var(--dark-mode-journal-base-accent-color);
 }
 
 /* Links (internet) */
 
-.dark-mode-journal a:link {
+.sheet.journal-entry.dark-mode-journal a:link {
     color: var(--dark-mode-journal-link-color);
 }
 
-.dark-mode-journal a:visited {
+.sheet.journal-entry.dark-mode-journal a:visited {
     color: var(--dark-mode-journal-link-visited-color);
 }
 
-.dark-mode-journal a:hover {
+.sheet.journal-entry.dark-mode-journal a:hover {
     color: var(--dark-mode-journal-link-color);
     text-shadow: 0px 0px 2px var(--dark-mode-journal-light-accent-color);
 }
 
 /* Links (entity, rolls) */
 
-.dark-mode-journal a.entity-link, .dark-mode-journal a.inline-roll {
+.sheet.journal-entry.dark-mode-journal .journal-page-content a.entity-link,
+.sheet.journal-entry.dark-mode-journal .journal-page-content a.content-link,
+.sheet.journal-entry.dark-mode-journal .journal-page-content a.inline-roll {
     background-color: var(--dark-mode-journal-button-background-color);
 }
 
 /* Secret section */
 
-.dark-mode-journal section.secret {
+.sheet.journal-entry.dark-mode-journal .journal-page-content section.secret {
     color: var(--dark-mode-journal-base-text-color);
     background-color: #df94ee20;
 }
 
 /* Modifies Polyglot CSS */
 
-.dark-mode-journal .polyglot-journal {
+.sheet.journal-entry.dark-mode-journal .journal-page-content .polyglot-journal {
     background-color: var(--dark-mode-journal-translucent-accent-color);
 }
 
@@ -134,7 +144,7 @@ body {
     to get exactly the effect you want, but hey, drop caps are cool! 
 */
 
-.dark-mode-journal span.drop-cap {
+.sheet.journal-entry.dark-mode-journal .journal-page-content span.drop-cap {
     float: left;
     font-family: 'anglo_textregular';
     font-size: 3em;
@@ -148,7 +158,7 @@ body {
     OPTION Added block styles
 ************************************************/
 
-.dark-mode-journal section.simple-block {
+.sheet.journal-entry.dark-mode-journal .journal-page-content section.simple-block {
     color: var(--dark-mode-journal-base-text-color);
     background-color: var(--dark-mode-journal-translucent-accent-color);
     border: 1px solid var(--dark-mode-journal-base-accent-color);
@@ -157,7 +167,7 @@ body {
     margin-left: 2%;
 }
 
-.dark-mode-journal section.simple-block-float {
+.sheet.journal-entry.dark-mode-journal .journal-page-content section.simple-block-float {
     color: var(--dark-mode-journal-base-text-color);
     background-color: var(--dark-mode-journal-translucent-accent-color);
     border: 1px solid var(--dark-mode-journal-base-accent-color);
@@ -168,7 +178,7 @@ body {
     float: right;
 }
 
-.dark-mode-journal section.ridged-block {
+.sheet.journal-entry.dark-mode-journal .journal-page-content section.ridged-block {
     color: var(--dark-mode-journal-base-text-color);
     background-color: var(--dark-mode-journal-translucent-accent-color);
     border: 5px ridge var(--dark-mode-journal-base-accent-color);
@@ -177,7 +187,7 @@ body {
     margin-left: 2%;
 }
 
-.dark-mode-journal section.ridged-block-float {
+.sheet.journal-entry.dark-mode-journal .journal-page-content section.ridged-block-float {
     color: var(--dark-mode-journal-base-text-color);
     background-color: var(--dark-mode-journal-translucent-accent-color);
     border: 5px ridge var(--dark-mode-journal-base-accent-color);
@@ -194,39 +204,45 @@ body {
 
 /* Journal title */
 
-.dark-mode-journal .window-content input[type="text"] {
+.sheet.journal-entry.dark-mode-journal .journal-entry-content input[type="text"] {
     color: var(--dark-mode-journal-header-color);
 }
 
-.dark-mode-journal .window-content input[type="text"]:focus, .dark-mode-journal .window-content input[type="text"]:hover {
+.sheet.journal-entry.dark-mode-journal input[type="text"]:focus,
+.sheet.journal-entry.dark-mode-journal input[type="text"]:hover {
     box-shadow: 0 0 10px var(--dark-mode-journal-base-accent-color);
 }
 
 /* Background */
 
-.dark-mode-journal .window-content {
+.sheet.journal-entry.dark-mode-journal .journal-entry-content {
     background: var(--dark-mode-journal-background-texture-image);
 }
 
-.dark-mode-journal button {
+.sheet.journal-entry.dark-mode-journal .journal-entry-content button {
     background-color: var(--dark-mode-journal-button-background-color);
     color: var(--dark-mode-journal-window-text-color);
     border-color: var(--dark-mode-journal-button-hover-color);
 }
 
-.dark-mode-journal button:hover {
+.sheet.journal-entry.dark-mode-journal .journal-page-content button:hover {
     background-color: var(--dark-mode-journal-button-hover-color);
     box-shadow: 0 0 10px var(--dark-mode-journal-base-accent-color);
 }
 
-.dark-mode-journal ::-webkit-scrollbar-thumb {
+.sheet.journal-entry.dark-mode-journal .scrollable {
+    scrollbar-color: var(--dark-mode-journal-base-accent-color) var(--dark-mode-journal-dark-accent-color);
+    scrollbar-width: thin;
+}
+
+.sheet.journal-entry.dark-mode-journal .window-content ::-webkit-scrollbar-thumb {
     background: var(--dark-mode-journal-dark-accent-color);
     border: 1px solid var(--dark-mode-journal-base-accent-color);
 }
 
 /* Folder dropdown - upper bar */
 
-.dark-mode-journal .editable select[name="folder"] {
+.sheet.journal-entry.dark-mode-journal .editable select[name="folder"] {
     color: var(--dark-mode-journal-window-text-color);
     background: var(--dark-mode-journal-background-texture-image);
 }
@@ -237,7 +253,7 @@ body {
 
 /* Folder dropdown - the actual dropdown */
 
-.dark-mode-journal .editable select[name="folder"] option {
+.sheet.journal-entry.dark-mode-journal .editable select[name="folder"] option {
     color: var(--dark-mode-journal-window-text-color);
     background-color: var(--dark-mode-journal-button-hover-color);
 }
@@ -248,13 +264,13 @@ body {
 
 /* Background with OneJournal */
 
-#OneJournalShell .dark-mode-journal.one-journal-attached .window-content {
+#OneJournalShell .sheet.journal-entry.dark-mode-journal.one-journal-attached .window-content {
     background: var(--dark-mode-journal-background-texture-image);
 }
 
 /* Entry title underline with OneJournal */
 
-.dark-mode-journal.one-journal-attached form input[name="name"] {
+.sheet.journal-entry.dark-mode-journal.one-journal-attached form input[name="name"] {
     border-color: var(--dark-mode-journal-base-accent-color);
 }
 
@@ -267,39 +283,100 @@ body {
 
 /* Background */
 
-.dark-mode-journal .editor .tox-edit-area {
+.sheet.journal-entry.dark-mode-journal .editor .tox-edit-area {
     /* background: var(--dark-mode-journal-background-texture-image); */
     background-color: var(--dark-mode-journal-background-color);
 }
 
 /* Buttons in edit mode */
 
-.dark-mode-journal .editor button {
+.sheet.journal-entry.dark-mode-journal button {
     color: var(--dark-mode-journal-base-text-color);
     background-color: var(--dark-mode-journal-button-background-color);
 }
 
-.dark-mode-journal .editor button:hover {
+.sheet.journal-entry.dark-mode-journal button:hover {
     color: var(--dark-mode-journal-base-text-color);
     background-color: var(--dark-mode-journal-button-hover-color);
 }
 
 /* Header bar where the buttons are in edit mode */
 
-.dark-mode-journal .editor .tox-toolbar-overlord, .dark-mode-journal .editor .tox-toolbar__primary {
+.sheet.journal-entry.dark-mode-journal .tox-toolbar-overlord,
+.dark-mode-journal .tox-toolbar__primary {
     background-color: var(--dark-mode-journal-background-color);
 }
 
 /* Button to go into edit mode */
 
-.dark-mode-journal .editor-edit {
+.sheet.journal-entry.dark-mode-journal .editor-edit {
     color: var(--dark-mode-journal-base-text-color);
     background-color: var(--dark-mode-journal-button-background-color);
 }
 
 /* Allows for the button images to be in colour */
 
-.dark-mode-journal .tox :not(svg):not(rect) {
+.sheet.journal-entry.dark-mode-journal .tox :not(svg):not(rect) {
     fill: var(--dark-mode-journal-base-text-color);
     color: var(--dark-mode-journal-base-text-color);
+}
+
+/************************************************
+Table of contents and the entire side panael for pages
+that was introduced in v10's Journals 2.0 update.
+************************************************/
+/* ToC */
+.sheet.journal-entry.dark-mode-journal .journal-sidebar {
+    background: var(--dark-mode-journal-background-texture-image);
+}
+
+.sheet.journal-entry.dark-mode-journal .pages-list .directory-item.active:first-of-type {
+    border-top: 1px solid gray;
+    border-bottom: 1px solid transparent;
+}
+
+.sheet.journal-entry.dark-mode-journal .pages-list .directory-item.active + :not(.active) {
+    border-top: 1px solid gray;
+}
+
+.sheet.journal-entry.dark-mode-journal .pages-list .directory-item {
+    border-top: 1px solid gray;
+}
+
+.sheet.journal-entry.dark-mode-journal .header-search input[type="search"],
+.sheet.journal-entry.dark-mode-journal .header-search input[type="search"]::placeholder  {
+    color: var(--dark-mode-journal-base-text-color);
+    background-color: var(--dark-mode-journal-button-background-color);
+}
+
+.sheet.journal-entry.dark-mode-journal .header-search input[type="search"]:-ms-input-placeholder {
+    color: var(--dark-mode-journal-base-text-color);
+    background-color: var(--dark-mode-journal-button-background-color);
+}
+
+.sheet.journal-entry.dark-mode-journal .header-search input[type="search"]::-ms-input-placeholder {
+    color: var(--dark-mode-journal-base-text-color);
+    background-color: var(--dark-mode-journal-button-background-color);
+}
+
+.sheet.journal-entry.dark-mode-journal .action-buttons button {
+    color: var(--dark-mode-journal-base-text-color);
+    background-color: var(--dark-mode-journal-button-background-color);
+}
+
+.sheet.journal-entry.dark-mode-journal .page-title {
+    font-size: 1.5em;
+    color: var(--dark-mode-journal-header-color);
+}
+
+.sheet.journal-entry.dark-mode-journal .heading-link {
+    font-size: 1.3em;
+    color: var(--dark-mode-journal-header-color);
+}
+
+.sheet.journal-entry.dark-mode-journal .pages-list .directory-item:active,
+.sheet.journal-entry.dark-mode-journal .pages-list .directory-item:hover,
+.sheet.journal-entry.dark-mode-journal .heading-link:active,
+.sheet.journal-entry.dark-mode-journal .heading-link:hover {
+    color: var(--dark-mode-journal-light-accent-color);
 }

@@ -79,65 +79,59 @@ body {
 	Headers and text
 ************************************************/
 
-.royal-journal h2, .royal-journal h1 {
+.sheet.journal-entry.royal-journal .journal-entry-content h1,
+.sheet.journal-entry.royal-journal .journal-entry-content h2,
+.sheet.journal-entry.royal-journal .journal-entry-content h3 {
     border-bottom: 1px solid var(--royal-journal-base-accent-color);
     color: var(--royal-journal-header-color);
     font-family: 'anglo_textregular';
     line-height: 90%;
 }
 
-/*
-.royal-journal h1 {
-    font-size: 3em;
-}
-
-.royal-journal h2 {
-    font-size: 1.9em;
-}
-
-.royal-journal h3 {
-    font-size: 1.5em;
-}
-
-.royal-journal h4 {
-    font-size: 1.25em;
-}
-*/
-.royal-journal .editor-content>h3, .royal-journal .editor-content>h4, .royal-journal .editor-content>h5, .royal-journal .editor-content>h6 {
+.sheet.journal-entry.royal-journal .journal-entry-content h3,
+.sheet.journal-entry.royal-journal .journal-entry-content h4,
+.sheet.journal-entry.royal-journal .journal-entry-content h5,
+.sheet.journal-entry.royal-journal .journal-entry-content h6 {
     color: var(--royal-journal-header-color);
 }
 
-.royal-journal .editor-content>p {
+.sheet.journal-entry.royal-journal .journal-entry-content p {
     color: var(--royal-journal-base-text-color);
 }
 
 /* bullet-point list */
 
-.royal-journal .editor-content>ul {
+.sheet.journal-entry.royal-journal .journal-entry-content ul {
+    color: var(--royal-journal-base-text-color);
+}
+
+/* numbered list */
+
+.sheet.journal-entry.royal-journal .journal-entry-content ol {
     color: var(--royal-journal-base-text-color);
 }
 
 /* tables in general */
 
-.royal-journal tbody {
+.sheet.journal-entry.royal-journal  .journal-entry-content tbody {
     color: var(--royal-journal-base-text-color);
 }
 
 /* table header cells */
 
-.royal-journal th {
+.sheet.journal-entry.royal-journal .journal-entry-content th {
     color: var(--royal-journal-header-color);
 }
 
 /* MEME minimal compatibility */
 
-.royal-journal .CodeMirror {
+.sheet.journal-entry.royal-journal .CodeMirror {
     color: var(--royal-journal-base-text-color);
 }
 
 /* The cursor indicating where you are writing */
 
-.royal-journal .CodeMirror-cursor {
+.sheet.journal-entry.royal-journal .CodeMirror-cursor {
     border-left: 1px solid var(--royal-journal-base-text-color);
 }
 
@@ -145,45 +139,47 @@ body {
     Special text and highlights
 ************************************************/
 
-.royal-journal .editor-content>blockquote {
+.sheet.journal-entry.royal-journal .journal-entry-content blockquote {
     color: var(--royal-journal-base-text-color);
 }
 
-.royal-journal ::selection {
+.sheet.journal-entry.royal-journal .journal-entry-content ::selection {
     background: var(--royal-journal-base-accent-color);
 }
 
 /* Links (internet) */
 
-.royal-journal a:link {
+.sheet.journal-entry.royal-journal a:link {
     color: var(--royal-journal-link-color);
 }
 
-.royal-journal a:visited {
+.sheet.journal-entry.royal-journal a:visited {
     color: var(--royal-journal-link-visited-color);
 }
 
-.royal-journal a:hover {
+.sheet.journal-entry.royal-journal a:hover {
     color: var(--royal-journal-link-color);
     text-shadow: 0px 0px 2px var(--royal-journal-light-accent-color);
 }
 
 /* Links (entity, rolls) */
 
-.royal-journal a.entity-link, .royal-journal a.inline-roll {
+.sheet.journal-entry.royal-journal a.entity-link,
+.sheet.journal-entry.royal-journal a.content-link,
+.sheet.journal-entry.royal-journal a.inline-roll {
     background-color: var(--royal-journal-button-background-color);
 }
 
 /* Secret section */
 
-.royal-journal section.secret {
+.sheet.journal-entry.royal-journal .journal-entry-content section.secret {
     color: var(--royal-journal-base-text-color);
     background-color: #df94ee20;
 }
 
 /* Modifies Polyglot CSS */
 
-.royal-journal .polyglot-journal {
+.sheet.journal-entry.royal-journal .journal-entry-content .polyglot-journal {
     background-color: var(--royal-journal-translucent-accent-color);
 }
 
@@ -193,7 +189,7 @@ body {
     to get exactly the effect you want, but hey, drop caps are cool! 
 */
 
-.royal-journal span.drop-cap {
+.sheet.journal-entry.royal-journal .journal-entry-content span.drop-cap {
     float: left;
     font-family: 'anglo_textregular';
     font-size: 3em;
@@ -207,7 +203,7 @@ body {
     OPTION Added block styles
 */
 
-.royal-journal section.simple-block {
+.sheet.journal-entry.royal-journal section.simple-block {
     color: var(--royal-journal-base-text-color);
     background-color: var(--royal-journal-translucent-accent-color);
     border: 1px solid var(--royal-journal-base-accent-color);
@@ -216,7 +212,7 @@ body {
     margin-left: 2%;
 }
 
-.royal-journal section.simple-block-float {
+.sheet.journal-entry.royal-journal section.simple-block-float {
     color: var(--royal-journal-base-text-color);
     background-color: var(--royal-journal-translucent-accent-color);
     border: 1px solid var(--royal-journal-base-accent-color);
@@ -227,7 +223,7 @@ body {
     float: right;
 }
 
-.royal-journal section.ridged-block {
+.sheet.journal-entry.royal-journal section.ridged-block {
     color: var(--royal-journal-base-text-color);
     background-color: var(--royal-journal-translucent-accent-color);
     border: 5px ridge var(--royal-journal-base-accent-color);
@@ -236,7 +232,7 @@ body {
     margin-left: 2%;
 }
 
-.royal-journal section.ridged-block-float {
+.sheet.journal-entry.royal-journal section.ridged-block-float {
     color: var(--royal-journal-base-text-color);
     background-color: var(--royal-journal-translucent-accent-color);
     border: 5px ridge var(--royal-journal-base-accent-color);
@@ -253,52 +249,53 @@ body {
 
 /* Journal title */
 
-.royal-journal .window-content input[type="text"] {
+.sheet.journal-entry.royal-journal .journal-entry-content input[type="text"] {
     color: var(--royal-journal-header-color);
     /*font-family: 'anglo_textregular';
     font-size: 2.8em;*/
 }
 
-.royal-journal .window-content input[type="text"]:focus, .royal-journal .window-content input[type="text"]:hover {
+.sheet.journal-entry.royal-journal .journal-entry-content input[type="text"]:focus,
+.sheet.journal-entry.royal-journal .journal-entry-content input[type="text"]:hover {
     box-shadow: 0 0 10px var(--royal-journal-base-accent-color);
 }
 
 /* Background */
 
-.royal-journal .window-content {
+.sheet.journal-entry.royal-journal .journal-entry-content  {
     background: var(--royal-journal-background-texture-image);
 }
 
-.royal-journal button {
+.sheet.journal-entry.royal-journal button {
     background-color: var(--royal-journal-button-background-color);
     color: var(--royal-journal-window-text-color);
     border-color: var(--royal-journal-button-hover-color);
 }
 
-.royal-journal button:hover {
+.sheet.journal-entry.royal-journal button:hover {
     background-color: var(--royal-journal-button-hover-color);
     box-shadow: 0 0 10px var(--royal-journal-base-accent-color);
 }
 
-.royal-journal ::-webkit-scrollbar-thumb {
-    background: var(--royal-journal-dark-accent-color);
-    border: 1px solid var(--royal-journal-base-accent-color);
+.sheet.journal-entry.royal-journal .scrollable {
+    scrollbar-color: var(--royal-journal-base-accent-color) var(--royal-journal-dark-accent-color);
+    scrollbar-width: thin;
 }
 
 /* Folder dropdown - upper bar */
 
-.royal-journal .editable select[name="folder"] {
+.sheet.journal-entry.royal-journal select[name="folder"] {
     color: var(--royal-journal-header-color);
     background: var(--royal-journal-background-texture-image);
 }
 
-.royal-journal .editable select[name="folder"]:focus, .royal-journal .editable select[name="folder"]:hover {
+.sheet.journal-entry.royal-journal select[name="folder"]:focus, .royal-journal .editable select[name="folder"]:hover {
     box-shadow: 0 0 5px var(--royal-journal-base-accent-color);
 }
 
 /* Folder dropdown - the actual dropdown */
 
-.royal-journal .editable select[name="folder"] option {
+.sheet.journal-entry.royal-journal select[name="folder"] option {
     color: var(--royal-journal-header-color);
     background-color: var(--royal-journal-button-background-color);
 }
@@ -309,13 +306,13 @@ body {
 
 /* Background with OneJournal */
 
-#OneJournalShell .royal-journal.one-journal-attached .window-content {
+#OneJournalShell .sheet.journal-entry.royal-journal.one-journal-attached .window-content {
     background: var(--royal-journal-background-texture-image);
 }
 
 /* Entry title underline with OneJournal */
 
-.royal-journal.one-journal-attached form input[name="name"] {
+.sheet.journal-entry.royal-journal.one-journal-attached form input[name="name"] {
     border-color: var(--royal-journal-base-accent-color);
 }
 
@@ -328,39 +325,107 @@ body {
 
 /* Background */
 
-.royal-journal .editor .tox-edit-area {
+.sheet.journal-entry.royal-journal .tox-edit-area {
     /* background: var(--royal-journal-background-texture-image); */
     background-color: var(--royal-journal-background-color);
 }
 
 /* Buttons in edit mode */
 
-.royal-journal .editor button {
+.sheet.journal-entry.royal-journal button {
     color: var(--royal-journal-base-text-color);
     background-color: var(--royal-journal-button-background-color);
 }
 
-.royal-journal .editor button:hover {
+.sheet.journal-entry.royal-journal button:hover {
     color: var(--royal-journal-base-text-color);
     background-color: var(--royal-journal-button-hover-color);
 }
 
 /* Header bar where the buttons are in edit mode */
 
-.royal-journal .editor .tox-toolbar-overlord, .royal-journal .editor .tox-toolbar__primary {
+.sheet.journal-entry.royal-journal .tox-toolbar-overlord, .royal-journal .editor .tox-toolbar__primary {
     background-color: var(--royal-journal-button-background-color);
 }
 
 /* Button to go into edit mode */
 
-.royal-journal .editor-edit {
+.sheet.journal-entry.royal-journal .editor-edit {
     color: var(--royal-journal-base-text-color);
     background-color: var(--royal-journal-button-background-color);
 }
 
 /* Allows for the button images to be in colour */
 
-.royal-journal .tox :not(svg):not(rect) {
+.sheet.journal-entry.royal-journal .tox :not(svg):not(rect) {
     fill: var(--royal-journal-base-text-color);
     color: var(--royal-journal-base-text-color);
+}
+
+/************************************************
+Table of contents and the entire side panael for pages
+that was introduced in v10's Journals 2.0 update.
+************************************************/
+/* ToC */
+.sheet.journal-entry.royal-journal .journal-sidebar {
+    background-image: var(--royal-journal-background-texture-image);
+}
+
+.sheet.journal-entry.royal-journal .directory-header,
+.sheet.journal-entry.royal-journal .pages-list,
+.sheet.journal-entry.royal-journal .action-buttons {
+    font-family: 'anglo-textregular';
+}
+
+.sheet.journal-entry.royal-journal .pages-list .directory-item.active:first-of-type {
+    border-top: 1px solid var(--royal-journal-base-accent-color);
+    border-bottom: 1px solid transparent;
+}
+
+.sheet.journal-entry.royal-journal .pages-list .directory-item.active + :not(.active) {
+    border-top: 1px solid var(--royal-journal-base-accent-color);
+}
+
+.sheet.journal-entry.royal-journal .pages-list .directory-item {
+    border-top: 1px solid var(--royal-journal-base-accent-color);
+}
+
+.sheet.journal-entry.royal-journal .header-search input[type="search"],
+.sheet.journal-entry.royal-journal .header-search input[type="search"]::placeholder  {
+    background-color: var(--royal-journal-background-color)
+}
+
+.sheet.journal-entry.royal-journal .header-search input[type="search"]:-ms-input-placeholder {
+    background-color: var(--royal-journal-background-color)
+}
+
+.sheet.journal-entry.royal-journal .header-search input[type="search"]::-ms-input-placeholder {
+    background-color: var(--royal-journal-background-color)
+}
+
+.sheet.journal-entry.royal-journal .action-buttons button {
+    font-family: 'anglo_textregular';
+    font-weight: bolder;
+    background-color: var(--royal-journal-button-background-color)
+}
+
+.sheet.journal-entry.royal-journal .action-buttons button:hover {
+    background-color: var(--royal-journal-button-hover-color)
+}
+
+.sheet.journal-entry.royal-journal .page-title {
+    font-size: 1.5em;
+    color: var(--royal-journal-header-color);
+}
+
+.sheet.journal-entry.royal-journal .heading-link {
+    font-size: 1.3em;
+    color: var(--royal-journal-header-color);
+}
+
+.sheet.journal-entry.royal-journal .pages-list .directory-item:active,
+.sheet.journal-entry.royal-journal .pages-list .directory-item:hover,
+.sheet.journal-entry.royal-one-journal .heading-link:active,
+.sheet.journal-entry.royal-journal .heading-link:hover {
+    color: var(--royal-journal-light-accent-color);
 }

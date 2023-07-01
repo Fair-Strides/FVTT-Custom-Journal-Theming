@@ -21,6 +21,8 @@
     Variables for uniform color control
 */
 
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Play&display=swap');
+
 body {
     --sci-fi-one-journal-dark-accent-color: #10504b;
     --sci-fi-one-journal-base-accent-color: #0f5f58;
@@ -35,55 +37,67 @@ body {
     --sci-fi-one-journal-button-hover-color: #062523;
     --sci-fi-one-journal-background-color: #a5afb4bb;
     --sci-fi-one-journal-background-texture-image: radial-gradient(#041b1a, #010a09);
+    --sci-fi-one-journal-header-font: 'Play', sans-serif;
+    --sci-fi-one-journal-base-font: 'Montserrat', sans-serif;
 }
 
 /************************************************
 	Headers and text
 ************************************************/
 
-.sci-fi-one-journal h2, .sci-fi-one-journal h1 {
+.sheet.journal-entry.sci-fi-one-journal h1,
+.sheet.journal-entry.sci-fi-one-journal h2,
+.sheet.journal-entry.sci-fi-one-journal h3 {
     border-bottom: 1px solid var(--sci-fi-one-journal-base-accent-color);
     color: var(--sci-fi-one-journal-header-color);
-    font-family: 'Play-Regular';
+    font-family: var(--sci-fi-one-journal-header-font);
 }
 
-.sci-fi-one-journal .editor-content>h3, .sci-fi-one-journal .editor-content>h4, .sci-fi-one-journal .editor-content>h5, .sci-fi-one-journal .editor-content>h6 {
+.sheet.journal-entry.sci-fi-one-journal h4,
+.sheet.journal-entry.sci-fi-one-journal h5,
+.sheet.journal-entry.sci-fi-one-journal h6 {
     color: var(--sci-fi-one-journal-header-color);
-    font-family: 'Play-Regular';
+    font-family: var(--sci-fi-one-journal-header-font);
 }
 
-.sci-fi-one-journal .editor-content>p {
+.sheet.journal-entry.sci-fi-one-journal p {
     color: var(--sci-fi-one-journal-base-text-color);
-    font-family: 'Montserrat-Regular';
+    font-family: var(--sci-fi-one-journal-base-font);
 }
 
 /* bullet-point list */
 
-.sci-fi-one-journal .editor-content>ul {
+.sheet.journal-entry.sci-fi-one-journal ul {
+    color: var(--sci-fi-one-journal-base-text-color);
+}
+
+/* numbered list */
+
+.sheet.journal-entry.sci-fi-one-journal ol {
     color: var(--sci-fi-one-journal-base-text-color);
 }
 
 /* tables in general */
 
-.sci-fi-one-journal tbody {
+.sheet.journal-entry.sci-fi-one-journal tbody {
     color: var(--sci-fi-one-journal-base-text-color);
 }
 
 /* table header cells */
 
-.sci-fi-one-journal th {
+.sheet.journal-entry.sci-fi-one-journal th {
     color: var(--sci-fi-one-journal-header-color);
 }
 
 /* MEME minimal compatibility */
 
-.sci-fi-one-journal .CodeMirror {
+.sheet.journal-entry.sci-fi-one-journal .CodeMirror {
     color: var(--sci-fi-one-journal-base-text-color);
 }
 
 /* The cursor indicating where you are writing */
 
-.sci-fi-one-journal .CodeMirror-cursor {
+.sheet.journal-entry.sci-fi-one-journal .CodeMirror-cursor {
     border-left: 1px solid var(--sci-fi-one-journal-base-text-color);
 }
 
@@ -91,45 +105,47 @@ body {
     Special text and highlights
 ************************************************/
 
-.sci-fi-one-journal .editor-content>blockquote {
+.sheet.journal-entry.sci-fi-one-journal blockquote {
     color: var(--sci-fi-one-journal-base-text-color);
 }
 
-.sci-fi-one-journal ::selection {
+.sheet.journal-entry.sci-fi-one-journal ::selection {
     background: var(--sci-fi-one-journal-light-accent-color);
 }
 
 /* Links (internet) */
 
-.sci-fi-one-journal a:link {
+.sheet.journal-entry.sci-fi-one-journal a:link {
     color: var(--sci-fi-one-journal-link-color);
 }
 
-.sci-fi-one-journal a:visited {
+.sheet.journal-entry.sci-fi-one-journal a:visited {
     color: var(--sci-fi-one-journal-link-visited-color);
 }
 
-.sci-fi-one-journal a:hover {
+.sheet.journal-entry.sci-fi-one-journal a:hover {
     color: var(--sci-fi-one-journal-link-color);
     text-shadow: 0px 0px 2px var(--sci-fi-one-journal-light-accent-color);
 }
 
 /* Links (entity, rolls) */
 
-.sci-fi-one-journal a.entity-link, .sci-fi-one-journal a.inline-roll {
+.sheet.journal-entry.sci-fi-one-journal a.content-link,
+.sheet.journal-entry.sci-fi-one-journal a.entity-link,
+.sheet.journal-entry.sci-fi-one-journal a.inline-roll {
     background-color: var(--sci-fi-one-journal-button-background-color);
 }
 
 /* Secret section */
 
-.sci-fi-one-journal section.secret {
+.sheet.journal-entry.sci-fi-one-journal section.secret {
     color: var(--sci-fi-one-journal-base-text-color);
     background-color: #df94ee20;
 }
 
 /* Modifies Polyglot CSS */
 
-.sci-fi-one-journal .polyglot-journal {
+.sheet.journal-entry.sci-fi-one-journal .polyglot-journal {
     background-color: #0c5c5663;
 }
 
@@ -139,7 +155,7 @@ body {
     to get exactly the effect you want, but hey, drop caps are cool! 
 ************************************************/
 
-.sci-fi-one-journal span.drop-cap {
+.sheet.journal-entry.sci-fi-one-journal span.drop-cap {
     float: left;
     font-family: 'anglo_textregular';
     font-size: 3em;
@@ -153,7 +169,7 @@ body {
     OPTION Added block styles
 ************************************************/
 
-.sci-fi-one-journal section.simple-block {
+.sheet.journal-entry.sci-fi-one-journal section.simple-block {
     color: var(--sci-fi-one-journal-base-text-color);
     background-color: var(--sci-fi-one-journal-translucent-accent-color);
     border: 1px solid var(--sci-fi-one-journal-base-accent-color);
@@ -162,7 +178,7 @@ body {
     margin-left: 2%;
 }
 
-.sci-fi-one-journal section.simple-block-float {
+.sheet.journal-entry.sci-fi-one-journal section.simple-block-float {
     color: var(--sci-fi-one-journal-base-text-color);
     background-color: var(--sci-fi-one-journal-translucent-accent-color);
     border: 1px solid var(--sci-fi-one-journal-base-accent-color);
@@ -173,7 +189,7 @@ body {
     float: right;
 }
 
-.sci-fi-one-journal section.ridged-block {
+.sheet.journal-entry.sci-fi-one-journal section.ridged-block {
     color: var(--sci-fi-one-journal-base-text-color);
     background-color: var(--sci-fi-one-journal-translucent-accent-color);
     border: 5px ridge var(--sci-fi-one-journal-base-accent-color);
@@ -182,7 +198,7 @@ body {
     margin-left: 2%;
 }
 
-.sci-fi-one-journal section.ridged-block-float {
+.sheet.journal-entry.sci-fi-one-journal section.ridged-block-float {
     color: var(--sci-fi-one-journal-base-text-color);
     background-color: var(--sci-fi-one-journal-translucent-accent-color);
     border: 5px ridge var(--sci-fi-one-journal-base-accent-color);
@@ -199,50 +215,51 @@ body {
 
 /* Journal title */
 
-.sci-fi-one-journal .window-content input[type="text"] {
+.sheet.journal-entry.sci-fi-one-journal .journal-entry-content input[type="text"] {
     color: var(--sci-fi-one-journal-header-color);
 }
 
-.sci-fi-one-journal .window-content input[type="text"]:focus, .sci-fi-one-journal .window-content input[type="text"]:hover {
+.sheet.journal-entry.sci-fi-one-journal .journal-entry-content input[type="text"]:focus,
+.sheet.journal-entry.sci-fi-one-journal .journal-entry-content input[type="text"]:hover {
     box-shadow: 0 0 10px var(--sci-fi-one-journal-base-accent-color);
 }
 
 /* Background */
 
-.sci-fi-one-journal .window-content {
+.sheet.journal-entry.sci-fi-one-journal .journal-entry-content {
     background: var(--sci-fi-one-journal-background-texture-image);
 }
 
-.sci-fi-one-journal button {
+.sheet.journal-entry.sci-fi-one-journal button {
     background-color: var(--sci-fi-one-journal-button-background-color);
     color: var(--sci-fi-one-journal-window-text-color);
     border-color: var(--sci-fi-one-journal-button-hover-color);
 }
 
-.sci-fi-one-journal button:hover {
+.sheet.journal-entry.sci-fi-one-journal button:hover {
     background-color: var(--sci-fi-one-journal-button-hover-color);
     box-shadow: 0 0 10px var(--sci-fi-one-journal-base-accent-color);
 }
 
-.sci-fi-one-journal ::-webkit-scrollbar-thumb {
+.sheet.journal-entry.sci-fi-one-journal ::-webkit-scrollbar-thumb {
     background: var(--sci-fi-one-journal-dark-accent-color);
     border: 1px solid var(--sci-fi-one-journal-base-accent-color);
 }
 
 /* Folder dropdown - upper bar */
 
-.sci-fi-one-journal .editable select[name="folder"] {
+.sheet.journal-entry.sci-fi-one-journal .editable select[name="folder"] {
     color: var(--sci-fi-one-journal-window-text-color);
     background: var(--sci-fi-one-journal-background-texture-image);
 }
 
-.sci-fi-one-journal .editable select[name="folder"]:focus, .sci-fi-one-journal .editable select[name="folder"]:hover {
+.sheet.journal-entry.sci-fi-one-journal .editable select[name="folder"]:focus, .sci-fi-one-journal .editable select[name="folder"]:hover {
     box-shadow: 0 0 5px var(--sci-fi-one-journal-base-accent-color);
 }
 
 /* Folder dropdown - the actual dropdown */
 
-.sci-fi-one-journal .editable select[name="folder"] option {
+.sheet.journal-entry.sci-fi-one-journal .editable select[name="folder"] option {
     color: var(--sci-fi-one-journal-window-text-color);
     background-color: var(--sci-fi-one-journal-button-hover-color);
 }
@@ -253,13 +270,13 @@ body {
 
 /* Background with OneJournal */
 
-#OneJournalShell .sci-fi-one-journal.one-journal-attached .window-content {
+#OneJournalShell .sheet.journal-entry.sci-fi-one-journal.one-journal-attached .window-content {
     background: var(--sci-fi-one-journal-background-texture-image);
 }
 
 /* Entry title underline with OneJournal */
 
-.sci-fi-one-journal.one-journal-attached form input[name="name"] {
+.sheet.journal-entry.sci-fi-one-journal.one-journal-attached form input[name="name"] {
     border-color: var(--sci-fi-one-journal-base-accent-color);
 }
 
@@ -272,39 +289,111 @@ body {
 
 /* Background */
 
-.sci-fi-one-journal .editor .tox-edit-area {
-    /* background: var(--sci-fi-one-journal-background-texture-image); */
+.sheet.journal-entry.sci-fi-one-journal .editor .tox-edit-area {
     background-color: var(--sci-fi-one-journal-background-color);
 }
 
 /* Buttons in edit mode */
 
-.sci-fi-one-journal .editor button {
+.sheet.journal-entry.sci-fi-one-journal .editor button {
     color: var(--sci-fi-one-journal-base-text-color);
     background-color: var(--sci-fi-one-journal-button-background-color);
 }
 
-.sci-fi-one-journal .editor button:hover {
+.sheet.journal-entry.sci-fi-one-journal .editor button:hover {
     color: var(--sci-fi-one-journal-base-text-color);
     background-color: var(--sci-fi-one-journal-button-hover-color);
 }
 
 /* Header bar where the buttons are in edit mode */
 
-.sci-fi-one-journal .editor .tox-toolbar-overlord, .sci-fi-one-journal .editor .tox-toolbar__primary {
+.sheet.journal-entry.sci-fi-one-journal .editor .tox-toolbar-overlord, .sci-fi-one-journal .editor .tox-toolbar__primary {
     background-color: var(--sci-fi-one-journal-background-color);
 }
 
 /* Button to go into edit mode */
 
-.sci-fi-one-journal .editor-edit {
+.sheet.journal-entry.sci-fi-one-journal .editor-edit {
     color: var(--sci-fi-one-journal-base-text-color);
     background-color: var(--sci-fi-one-journal-button-background-color);
 }
 
 /* Allows for the button images to be in colour */
 
-.sci-fi-one-journal .tox :not(svg):not(rect) {
+.sheet.journal-entry.sci-fi-one-journal .tox :not(svg):not(rect) {
     fill: var(--sci-fi-one-journal-base-text-color);
     color: var(--sci-fi-one-journal-base-text-color);
+}
+
+/************************************************
+Table of contents and the entire side panael for pages
+that was introduced in v10's Journals 2.0 update.
+************************************************/
+/* ToC */
+.sheet.journal-entry.sci-fi-one-journal .journal-sidebar {
+    background: var(--sci-fi-one-journal-background-texture-image);
+}
+
+.sheet.journal-entry.sci-fi-one-journal .directory-header,
+.sheet.journal-entry.sci-fi-one-journal .pages-list,
+.sheet.journal-entry.sci-fi-one-journal .action-buttons {
+    font-family: var(--sci-fi-one-journal-header-font);
+    font-weight: bolder;
+    color: var(--sci-fi-one-journal-base-text-color);
+}
+
+.sheet.journal-entry.sci-fi-one-journal .pages-list .directory-item.active:first-of-type {
+    border-top: 1px solid gray;
+    border-bottom: 1px solid transparent;
+}
+
+.sheet.journal-entry.sci-fi-one-journal .pages-list .directory-item.active + :not(.active) {
+    border-top: 1px solid gray;
+}
+
+.sheet.journal-entry.sci-fi-one-journal .pages-list .directory-item {
+    border-top: 1px solid gray;
+}
+
+.sheet.journal-entry.sci-fi-one-journal .header-search input[type="search"],
+.sheet.journal-entry.sci-fi-one-journal .header-search input[type="search"]::placeholder  {
+    font-family: var(--sci-fi-one-journal-header-font);
+    color: var(--sci-fi-one-journal-base-text-color);
+    background-color: var(--sci-fi-one-journal-button-background-color);
+}
+
+.sheet.journal-entry.sci-fi-one-journal .header-search input[type="search"]:-ms-input-placeholder {
+    font-family: var(--sci-fi-one-journal-header-font);
+    color: var(--sci-fi-one-journal-base-text-color);
+    background-color: var(--sci-fi-one-journal-button-background-color);
+}
+
+.sheet.journal-entry.sci-fi-one-journal .header-search input[type="search"]::-ms-input-placeholder {
+    font-family: var(--sci-fi-one-journal-header-font);
+    color: var(--sci-fi-one-journal-base-text-color);
+    background-color: var(--sci-fi-one-journal-button-background-color);
+}
+
+.sheet.journal-entry.sci-fi-one-journal .action-buttons button {
+    font-family: var(--sci-fi-one-journal-header-font);
+    font-weight: bolder;
+    color: var(--sci-fi-one-journal-base-text-color);
+    background-color: var(--sci-fi-one-journal-button-background-color);
+}
+
+.sheet.journal-entry.sci-fi-one-journal .page-title {
+    font-size: 1.5em;
+    color: var(--sci-fi-one-journal-header-color);
+}
+
+.sheet.journal-entry.sci-fi-one-journal .heading-link {
+    font-size: 1.3em;
+    color: var(--sci-fi-one-journal-header-color);
+}
+
+.sheet.journal-entry.sci-fi-one-journal .pages-list .directory-item:active,
+.sheet.journal-entry.sci-fi-one-journal .pages-list .directory-item:hover,
+.sheet.journal-entry.sci-fi-one-journal .heading-link:active,
+.sheet.journal-entry.sci-fi-one-journal .heading-link:hover {
+    color: var(--sci-fi-one-journal-light-accent-color);
 }

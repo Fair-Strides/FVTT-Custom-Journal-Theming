@@ -14,41 +14,56 @@
 
 */
 
-body {
-    --handwritten-background-texture-image: url(../textures/parchment-1.jpg);
-    --handwritten-base-font: 'lovers_quarrelregular'
+@import url('https://fonts.googleapis.com/css2?family=Lovers+Quarrel&display=swap');
+
+.sheet.journal-entry  {
+    --handwritten-background-texture-image: url('../textures/parchment-1.jpg');
+    --handwritten-background-panel-image: url('../textures/parchment-2.png');
+    --handwritten-base-font: 'Lovers Quarrel', cursive;
+    --handwritten-hr-color:  '#996a42';
+    --handwritten-polyglot-color: '#b38e4c60';
+    --handwritten-button-color: '#a5856b';
+    --handwritten-button-background-color: '#604020';
 }
 
 /************************************************
 	Headers and text
 ************************************************/
-
-.handwritten-letter h1, .handwritten-letter h2, .handwritten-letter .editor-content>h3, .handwritten-letter .editor-content>h4, .handwritten-letter .editor-content>h5, .handwritten-letter .editor-content>h6, .handwritten-letter .editor-content>p, .handwritten-letter .editor-content>ul {
+.sheet.journal-entry.handwritten-letter .journal-page-content h1,
+.sheet.journal-entry.handwritten-letter .journal-page-content h2,
+.sheet.journal-entry.handwritten-letter .journal-page-content h3 {
     border-bottom: 0px;
     font-family: var(--handwritten-base-font);
     line-height: 85%;
 }
 
-.handwritten-letter h1 {
-    font-size: 3em;
+.sheet.journal-entry.handwritten-letter  .journal-entry-content h1 {
+    font-size: 2em;
 }
 
-.handwritten-letter h2 {
-    font-size: 2.8em;
+.sheet.journal-entry.handwritten-letter  .journal-entry-content h2 {
+    font-size: 1.5em;
 }
 
-.handwritten-letter .editor-content>h3 {
-    font-size: 2.4em;
+.sheet.journal-entry.handwritten-letter  .journal-entry-content h3 {
+    font-size: 1.25em;
 }
 
-.handwritten-letter .editor-content>p, .handwritten-letter .editor-content>ul {
-    font-size: 2.2em;
+.sheet.journal-entry.handwritten-letter .journal-page-content {
+    line-height: 100%;
+    font-size: 2em;
+}
+
+.sheet.journal-entry.handwritten-letter .journal-page-content hr {
+    border-color: var(--handwritten-hr-color);
+    border-radius: 35%;
+    border-width: 2px;
 }
 
 /* MEME minimal compatibility */
 
-.handwritten-letter .CodeMirror p, 
-.handwritten-letter .CodeMirror ul {
+.handwritten-letter .journal-entry-content .CodeMirror p, 
+.handwritten-letter .journal-entry-content .CodeMirror ul {
     font-family: var(--handwritten-base-font);
     font-size: 2.2em;
 }
@@ -59,8 +74,8 @@ body {
 
 /* Modifies Polyglot CSS */
 
-.handwritten-letter .polyglot-journal {
-    background-color: #b38e4c60;
+.handwritten-letter .journal-entry-content .polyglot-journal {
+    background-color: var(--handwritten-polyglot-color);
 }
 
 /************************************************
@@ -69,13 +84,60 @@ body {
 
 /* Background */
 
-.handwritten-letter .window-content {
+.sheet.journal-entry.handwritten-letter .journal-entry-content {
     background: var(--handwritten-background-texture-image);
+    background-size: cover;
+    font-family: var(--handwritten-base-font);
+}
+
+/* ToC */
+.sheet.journal-entry.handwritten-letter .journal-sidebar {
+    background-image: var(--handwritten-background-panel-image);
     background-size: cover;
 }
 
+.sheet.journal-entry.handwritten-letter .directory-header,
+.sheet.journal-entry.handwritten-letter .pages-list,
+.sheet.journal-entry.handwritten-letter .action-buttons {
+    background: rgba(0,0,0, 0.5);
+    font-family: var(--handwritten-base-font);
+    font-weight: bolder;
+    color: var(--handwritten-button-color);
+}
+
+.sheet.journal-entry.handwritten-letter .header-search input[type="search"],
+.sheet.journal-entry.handwritten-letter .header-search input[type="search"]::placeholder  {
+    color: var(--handwritten-button-color);
+    background-color: var(--handwritten-button-background-color);
+}
+
+.sheet.journal-entry.handwritten-letter .header-search input[type="search"]:-ms-input-placeholder {
+    color: var(--handwritten-button-color);
+    background-color: var(--handwritten-button-background-color);
+}
+
+.sheet.journal-entry.handwritten-letter .header-search input[type="search"]::-ms-input-placeholder {
+    color: var(--handwritten-button-color);
+    background-color: var(--handwritten-button-background-color);
+}
+
+.sheet.journal-entry.handwritten-letter .action-buttons button {
+    font-family: var(--handwritten-base-font);
+    font-weight: bolder;
+    color: var(--handwritten-button-color);
+    background-color: var(--handwritten-button-background-color);
+}
+
+.sheet.journal-entry.handwritten-letter .page-title {
+    font-size: 1.5em;
+}
+
+.sheet.journal-entry.handwritten-letter .heading-link {
+    font-size: 1.3em;
+}
+
 /*
-    One Journal compatibility
+One Journal compatibility
 */
 
 /* Background with OneJournal */

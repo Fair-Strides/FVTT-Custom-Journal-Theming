@@ -1,14 +1,13 @@
 # FVTT Custom Journal Theming - The Journals of your Dreams!
 
-## New Features:
+## New Changes:
+Upgraded to v10 of Foundry (Finally! I'm sorry for the delays)
 
-I've incorporated additions by [elizeuangelo](https://github.com/elizeuangelo/FVTT-Custom-Journal-Theming) that included a custom journal theme where an image is specified as a background to the journal entry. Furthermore, the background and editor can be repositioned and resized when the sheet is unlocked.
+Nothing new added, except that I expanded the styling to extend to the pages panel on the side of the Journal Entry.
 
-![Image Journal](https://github.com/Fair-Strides/FVTT-Custom-Journal-Theming/raw/v9-journals/custom-journal_image-journal.png)
+I did have to remove the Image Journal and Video Journal types in this upgrade to v10. They were too complex to work with the new Journals 2.0 system that was introduced in v10 of Foundry, I'm afraid.
 
-After that, I received a request to expand it to allow for a Video Journal. This works similarly to the Image Journal above, save that you can configure a video as the background piece, as well as the image that is supplied in case the video can't be loaded in.
-
-![Video Journal](https://github.com/Fair-Strides/FVTT-Custom-Journal-Theming/raw/v9-journals/custom-journal_video-journal.png)
+Currently, support for the extra style options is not there. The new ProseMirror interface is hard to work with, so you could add styles in by editing the source of the content at best. Previous entries that had them already should still work though.
 
 ***
 
@@ -28,22 +27,13 @@ In addition to the regular reskin provided by the different themes, you can now 
 
 If you encounter any bug or want to suggest improvements, don't hesitate to tell me either 
 here through the issues or on Discord (do tag me if reaching out through the Foundry Discord
-if you want me to see your message @Fair Strides#2148. Do take into account though that this
+if you want me to see your message @fairstrides. Do take into account though that this
 is still an early version which needs a lot more work. I'll do my best to fix these issues
 as fast as possible, but take note that it may still take a certain time before I have the
 time to fix something.
 
-- **Bug**: Currently, it is possible to open and interact with multiple Config windows for the
-Image and Video Journal entries. I believe a check is needed in the UI windows.
-
-- **Bug**: The video element in the Video Journal does not resize manually when you resize
-with the sheet unlocked. I need to feed the data to the proper spot.
-
 - **Bug**: The drop down for the "default" journal sheet doesn't currently work. I have yet to 
 find out why, so please be patient. Rest assured, individual sheet themes *are* working.
-
-- **Compatibility issue**: The button for MINDMAP doesn't show when using Custom Journal. There
-is also a known issue with Data Toolbox.
 
 *Theme-specific issues aren't going to be listed here, but will be available and appropriately 
 tagged in the GitHub issues.*
@@ -66,7 +56,7 @@ need for individual creation of such themes, but I do understand many will proba
 want to make their own, and as such I do try to guide you though it so my work can help you.
 Provided they do not introduce fonts or textures I cannot distribute and they are of good quality,
 I might also be open to adding your styles, if you so wish. Just reach out to me in Discord 
-(Fair Strides#2148) or right here if you're confident to submit a pull request.
+(fairstrides) or right here if you're confident to submit a pull request.
 
 ## Thanks, attributions & links
 

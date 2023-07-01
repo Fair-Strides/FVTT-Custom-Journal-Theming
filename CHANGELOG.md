@@ -1,3 +1,9 @@
+# 1.6.0
+
+-Updated for v10 (Finally!)
+-Had to remove the Image Journal and Video Journal due to complexity/recreation with Journals 2.0 introduced in v10.
+-Improved font support by directly importing from Google for most fonts (AngloText was from somewhere else, so it's still included)
+
 # 1.5.0
 
 -Added two new Journal types: Image Journal and Video Journal ( originally incorporated Image Journal from [elizeuangelo](https://github.com/elizeuangelo/FVTT-Custom-Journal-Theming), and then adapted from there)

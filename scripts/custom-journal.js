@@ -1,6 +1,3 @@
-import { ImageJournal } from './image-journal.js';
-import { VideoJournal } from './video-journal.js';
-
 /* CUSTOMIZE
  * Add any extra themes here: just copy-paste the whole block, changing only the class
  * name for the theme's name that will appear in the drop-down, and the name in single
@@ -66,10 +63,13 @@ class SciFiTwoJournal extends JournalSheet {
 Hooks.on("init", (documentTypes) => {
 console.log("Custom Journals | Registering the module's TinyMCE Styles.");
 
+// This may still work if using the TinyMCE Editor.
+// In the future, I'll return to this when I can figure out how to work with the ProseMirror editor...
 libWrapper.register('custom-journal', 'JournalSheet.prototype.activateEditor', function(wrapped, name, options={}, ...args) {
     if (!options.style_formats) 
     {
-        options.style_formats = [
+        options.style_formats = CONFIG.TinyMCE.style_formats;
+		options.style_formats.push(
             {
                 title: "Custom",
                 items: [
@@ -81,8 +81,9 @@ libWrapper.register('custom-journal', 'JournalSheet.prototype.activateEditor', f
                     }
                 ]
             }
-        ];
+		);
     }
+
     options.style_formats.push(
         {
             title: game.i18n.localize("custom-journal.StyleSection"),
@@ -169,20 +170,6 @@ Journal.registerSheet("journals", SciFiTwoJournal, {
 	types: ["base"],
 	makeDefault: false
 });
-
-Journal.registerSheet("journals", ImageJournal, {
-	label: game.i18n.localize("custom-journal.ImageJournal"),
-	types: ["base"],
-	makeDefault: false
-});
-
-Journal.registerSheet("journals", VideoJournal, {
-	label: game.i18n.localize("custom-journal.VideoJournal"),
-	types: ["base"],
-	makeDefault: false
-});
-
-EntitySheetConfig.updateDefaultSheets(game.settings.get("core", "sheetClasses"));
 
 console.log("Custom Journals | Ready.")
 });
